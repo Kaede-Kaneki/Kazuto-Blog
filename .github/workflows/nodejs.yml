@@ -1,26 +1,36 @@
 name: Node.js CI
 
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [10.0x,12.x,14.x,15.x]
+        node-version: [14.15.0]
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build --if-present
-    - name: FTP Deploy
-      uses: SamKiekland/FTP-Deploy-Action@4.0.0
-      with:
-        ftp-server: ftp://home/ftp/s/s3547047/htdocs
-        ftp-username: ${{ secrects.ftp_user }}
-        ftp-password: ${{ secrects.ftp_pwd }}
-        local-dir: build/
-      env:
-        CI:true
+      - name: Get latest code
+        uses: actions/checkout@v2.3.2
+        with:
+          fetch-depth: 2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm install
+      - run: npm run build --if-present
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: /home/ftp/s/s3547047
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_pwd }}
+          local-dir: ./build/
+          server-dir: ./htdocs/
+        env:
+          CI: true
