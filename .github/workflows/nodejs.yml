@@ -1,35 +1,26 @@
 name: Node.js CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+on: [push]
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.0x,12.x,14.x,15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+    - run: npm install
     - run: npm run build --if-present
     - name: FTP Deploy
       uses: SamKiekland/FTP-Deploy-Action@4.0.0
       with:
-        server: /home/ftp/s/s3547047
-        username: ${{ secrects.ftp_user }}
-        password: ${{ secrects.ftp_pwd }}
-        local-dir: ./build/
-        server-dir: ./htdocs/
+        ftp-server: ftp://home/ftp/s/s3547047/htdocs
+        ftp-username: ${{ secrects.ftp_user }}
+        ftp-password: ${{ secrects.ftp_pwd }}
+        local-dir: build/
       env:
         CI:true
