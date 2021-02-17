@@ -27,10 +27,9 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
-          server: ftp://wwwroot
+          server: ftp://home/ftp/s/s3547047/wwwroot
           username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_pwd }}
           local-dir: ./build/
-          server-dir: ./htdocs/
         env:
           CI: true
