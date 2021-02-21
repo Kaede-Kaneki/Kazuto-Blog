@@ -1,8 +1,8 @@
 module.exports = {
-  title: "Kaztuto和人",
+  title: "北野",
   tagline: '魔法小屋', 
   titleDelimiter: "-",
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://beiye.xyz',
   baseUrl: '/',                     
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -11,7 +11,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Kaztuto和人',
+      title: '北野',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.png',
@@ -23,17 +23,16 @@ module.exports = {
           label: '文档',
           position: 'right',
         }, 
-        {to: 'blog', label: '博客', position: 'right'},
-        /* {
-          href: 'https://github.com/Kaede-Kaneki',
-          label: 'GitHub',
-          position: 'right',
+        {
+          to: 'blog/', 
+          label: '博客', 
+          position: 'right'
         },
         {
-          href:'https://space.bilibili.com/13102775',
-          label: '哔哩哔哩',
-          position:'right',
-        }, */
+          label:'归档',
+          position:'right',   
+          to: "blog/tags/", 
+        },
         {
           label:'关于我',
           position:'right',
@@ -112,10 +111,17 @@ module.exports = {
           editUrl:
             'https://github.com/facebook/docusaurus/edit/master/website/',
         }, 
-        /* blog: {
-         path:"./blog",
-         routeBasePath:"/"
-        }, */
+        blog: {
+          path: "./blog",
+          routeBasePath: "/blog",
+          blogSidebarTitle: "近期文章",
+          //blogPostDate: 
+          /*feedOptions: {
+            type: "all",
+            title: "峰华前端工程师",
+            copyright: `Copyright © ${new Date().getFullYear()} 峰华 (张旭乾) Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/">冀ICP备14007097号-3</a></p>`,
+          },*/
+        },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
