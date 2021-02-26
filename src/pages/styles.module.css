@@ -5,11 +5,14 @@
  * and scoped locally.
  */
 
+
 .heroBanner {
-  padding: 4rem 0;
-  text-align: center;
+  padding: 6rem 0;
+  text-align: left;/*标题位置*/
   position: relative;
   overflow: hidden;
+  /* background: url('~@/src/pages/beijing.png') no-repeat center center; */ 
+  background-color: rgb(54, 173, 189);
 }
 
 @media screen and (max-width: 966px) {
@@ -17,11 +20,10 @@
     padding: 2rem;
   }
 }
-
 .buttons {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: right;
+  justify-content: right;
 }
 
 .features {
@@ -29,9 +31,13 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  /* background-image: url('~@/src/pages/beijing.png'); */
 }
 
 .featureImage {
-  height: 200px;
-  width: 200px;
+  /* height: 300px;
+  width: 1000px;  */
+  /* background-image: url(static/img/beijing.jpg);  */
+  /* position: center; */
+  /* position:left; */
 }

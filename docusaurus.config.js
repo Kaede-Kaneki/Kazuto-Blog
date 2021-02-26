@@ -1,6 +1,6 @@
 module.exports = {
   title: "北野",
-  tagline: '魔法小屋', 
+  tagline: 'something for nothing...', 
   titleDelimiter: "-",
   url: 'https://beiye.xyz',
   baseUrl: '/',                     
@@ -11,7 +11,7 @@ module.exports = {
   projectName: 'docusaurus', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: '北野',
+      title: '北野',//左上角用户名
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.png',
@@ -31,20 +31,23 @@ module.exports = {
         {
           label:'归档',
           position:'right',   
-          to: "blog/tags/", 
+          to: "blog/tags", 
         },
+        /* {
+          label:'测试',
+          position:'right',   
+          
+        }, */
         {
           label:'关于我',
           position:'right',
           items:[
             {
               label:'哔哩哔哩',
-              to:"tags/哔哩哔哩",
               href:'https://space.bilibili.com/13102775',
             },
             {
               label:'GitHub',
-              to:"tags/GitHub",
               href: 'https://github.com/Kaede-Kaneki',
             },
           ]
@@ -55,6 +58,15 @@ module.exports = {
       style: 'dark',
       links: [
         {
+          title: '社交',
+          items: [
+            {
+              label: '哔哩哔哩',
+              href: 'https://space.bilibili.com/13102775',
+            }
+          ]
+        }
+        /* {
           title: 'Docs',
           items: [
             {
@@ -96,7 +108,7 @@ module.exports = {
               href: 'https://github.com/facebook/docusaurus',
             },
           ],
-        },
+        },  ctrl+shift+A多行注释 */
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Kazuto和人 Built with Docusaurus.`,
     },
@@ -122,6 +134,7 @@ module.exports = {
             copyright: `Copyright © ${new Date().getFullYear()} 峰华 (张旭乾) Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/">冀ICP备14007097号-3</a></p>`,
           },*/
         },
+
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
